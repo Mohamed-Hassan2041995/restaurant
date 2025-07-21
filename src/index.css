@@ -2,41 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Luxury Restaurant Design System - Inspired by Fine Dining Aesthetics */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core luxurious palette inspired by fine dining */
+    --background: 28 15% 97%;  /* Warm cream */
+    --foreground: 25 25% 15%;  /* Rich dark brown */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card surfaces with subtle warmth */
+    --card: 30 20% 98%;
+    --card-foreground: 25 25% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    /* Popover elements */
+    --popover: 30 20% 98%;
+    --popover-foreground: 25 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Rich burgundy wine color */
+    --primary: 345 65% 35%;
+    --primary-foreground: 30 20% 98%;
+    --primary-glow: 345 85% 55%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Warm gold accent */
+    --secondary: 45 85% 65%;
+    --secondary-foreground: 25 25% 15%;
+    --secondary-dark: 42 75% 45%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted tones with warmth */
+    --muted: 28 12% 92%;
+    --muted-foreground: 25 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Earthy sage green */
+    --accent: 95 25% 55%;
+    --accent-foreground: 30 20% 98%;
+    --accent-light: 95 35% 85%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Luxury metallic bronze */
+    --bronze: 25 45% 45%;
+    --bronze-light: 25 65% 75%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Status colors */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 30 20% 98%;
+    --success: 95 45% 45%;
+    --warning: 42 95% 55%;
 
-    --radius: 0.5rem;
+    /* Interface elements */
+    --border: 28 15% 88%;
+    --input: 28 15% 95%;
+    --ring: 345 65% 35%;
+
+    /* Custom gradients for luxury feel */
+    --gradient-primary: linear-gradient(135deg, hsl(345 65% 35%), hsl(345 85% 55%));
+    --gradient-gold: linear-gradient(135deg, hsl(45 85% 65%), hsl(42 75% 45%));
+    --gradient-warm: linear-gradient(180deg, hsl(28 15% 97%), hsl(28 12% 92%));
+    --gradient-bronze: linear-gradient(135deg, hsl(25 45% 45%), hsl(25 65% 75%));
+
+    /* Elegant shadows */
+    --shadow-elegant: 0 10px 30px -10px hsl(345 65% 35% / 0.3);
+    --shadow-glow: 0 0 40px hsl(345 85% 55% / 0.4);
+    --shadow-soft: 0 4px 20px -8px hsl(25 25% 15% / 0.15);
+
+    /* Smooth transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +131,125 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Custom scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/60 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+  }
+}
+
+@layer components {
+  /* Hero gradient backgrounds */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-gold {
+    background: var(--gradient-gold);
+  }
+
+  .gradient-warm {
+    background: var(--gradient-warm);
+  }
+
+  .gradient-bronze {
+    background: var(--gradient-bronze);
+  }
+
+  /* Elegant shadows */
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  /* Glass morphism effect for cards */
+  .glass {
+    @apply backdrop-blur-md bg-card/80 border-border/50;
+  }
+
+  /* Luxury text styles */
+  .text-luxury {
+    @apply bg-gradient-to-r from-secondary via-bronze to-secondary bg-clip-text text-transparent;
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Parallax scroll effect */
+  .parallax {
+    transform: translate3d(0, calc(var(--scroll) * -0.5px), 0);
+  }
+
+  /* Organic shapes */
+  .organic-border {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-2 shadow-elegant;
+  }
+
+  /* Elegant button styles */
+  .btn-luxury {
+    @apply relative overflow-hidden bg-primary text-primary-foreground px-8 py-4 rounded-2xl font-medium;
+    @apply before:absolute before:inset-0 before:bg-gradient-to-r before:from-primary-glow before:to-primary before:opacity-0 before:transition-opacity before:duration-300;
+    @apply hover:before:opacity-100 hover:shadow-glow;
+  }
+
+  .btn-luxury span {
+    @apply relative z-10;
+  }
+
+  /* Menu item hover effect */
+  .menu-item {
+    @apply relative p-6 rounded-2xl glass transition-all duration-300;
+    @apply hover:scale-105 hover:shadow-elegant;
+  }
+
+  /* Section dividers */
+  .section-divider {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-bronze to-transparent;
   }
 }

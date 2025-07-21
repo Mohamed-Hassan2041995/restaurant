@@ -9,15 +9,18 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-soft hover:shadow-elegant",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+          "border border-primary/20 bg-background/80 backdrop-blur-sm text-primary hover:bg-primary hover:text-primary-foreground hover:shadow-glow",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-secondary text-secondary-foreground hover:bg-secondary-dark shadow-soft hover:shadow-elegant",
+        ghost: "hover:bg-accent/20 hover:text-accent",
+        link: "text-primary underline-offset-4 hover:underline text-luxury",
+        luxury: "relative overflow-hidden bg-gradient-to-r from-primary to-primary-glow text-primary-foreground font-medium shadow-elegant hover:shadow-glow hover:scale-105 transition-all duration-300 before:absolute before:inset-0 before:bg-white/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity",
+        elegant: "bg-bronze text-card hover:bg-bronze-light shadow-soft hover:shadow-elegant transition-all duration-300",
+        gold: "bg-secondary text-secondary-foreground hover:bg-secondary-dark shadow-soft hover:shadow-glow transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",
