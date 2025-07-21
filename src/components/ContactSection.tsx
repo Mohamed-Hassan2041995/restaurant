@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const { toast } = useToast();
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!formData.name || !formData.email || !formData.message) {
       toast({
         title: "Missing Information",
         description: "Please fill in all required fields.",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -42,7 +42,7 @@ const ContactSection = () => {
       toast({
         title: "Message Sent!",
         description: "We'll get back to you within 24 hours.",
-        variant: "default"
+        variant: "default",
       });
     }, 2000);
   };
@@ -51,27 +51,39 @@ const ContactSection = () => {
     {
       icon: MapPin,
       title: "Visit Us",
-      details: ["123 Gourmet Avenue", "Downtown District", "New York, NY 10001"],
-      action: "Get Directions"
+      details: [
+        "123 Gourmet Avenue",
+        "Downtown District",
+        "New York, NY 10001",
+      ],
+      action: "Get Directions",
     },
     {
       icon: Phone,
       title: "Call Us",
       details: ["+1 (555) 123-4567", "Available 9 AM - 11 PM", "Daily"],
-      action: "Call Now"
+      action: "Call Now",
     },
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@bellissimo.com", "reservations@bellissimo.com", "events@bellissimo.com"],
-      action: "Send Email"
+      details: [
+        "info@bellissimo.com",
+        "reservations@bellissimo.com",
+        "events@bellissimo.com",
+      ],
+      action: "Send Email",
     },
     {
       icon: Clock,
       title: "Operating Hours",
-      details: ["Monday - Sunday", "5:00 PM - 11:00 PM", "Kitchen closes at 10:30 PM"],
-      action: "View Menu"
-    }
+      details: [
+        "Monday - Sunday",
+        "5:00 PM - 11:00 PM",
+        "Kitchen closes at 10:30 PM",
+      ],
+      action: "View Menu",
+    },
   ];
 
   return (
@@ -81,14 +93,17 @@ const ContactSection = () => {
         <div className="text-center mb-16 animate-fade-in-up">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
             <Send className="h-4 w-4 text-accent mr-2" />
-            <span className="text-accent font-medium text-sm uppercase tracking-wider">Get In Touch</span>
+            <span className="text-accent font-medium text-sm uppercase tracking-wider">
+              Get In Touch
+            </span>
           </div>
           <h2 className="text-4xl md:text-6xl font-elegant font-bold text-foreground mb-6">
             Contact
-            <span className="text-luxury block">Bellissimo</span>
+            <span className="text-luxury "> Bellissimo</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            We'd love to hear from you. Whether you have questions, special requests, or just want to share your experience with us.
+            We'd love to hear from you. Whether you have questions, special
+            requests, or just want to share your experience with us.
           </p>
         </div>
 
@@ -105,13 +120,19 @@ const ContactSection = () => {
                     Message Sent Successfully!
                   </h3>
                   <p className="text-muted-foreground mb-8">
-                    Thank you for reaching out to us. We've received your message and will respond within 24 hours.
+                    Thank you for reaching out to us. We've received your
+                    message and will respond within 24 hours.
                   </p>
-                  <Button 
-                    variant="luxury" 
+                  <Button
+                    variant="luxury"
                     onClick={() => {
                       setIsSubmitted(false);
-                      setFormData({ name: '', email: '', subject: '', message: '' });
+                      setFormData({
+                        name: "",
+                        email: "",
+                        subject: "",
+                        message: "",
+                      });
                     }}
                     className="rounded-full"
                   >
@@ -123,32 +144,42 @@ const ContactSection = () => {
                   <h3 className="text-2xl font-elegant font-bold text-foreground mb-6">
                     Send Us a Message
                   </h3>
-                  
+
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="contact-name" className="text-foreground font-medium">
+                        <Label
+                          htmlFor="contact-name"
+                          className="text-foreground font-medium"
+                        >
                           Your Name *
                         </Label>
                         <Input
                           id="contact-name"
                           type="text"
                           value={formData.name}
-                          onChange={(e) => handleInputChange('name', e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("name", e.target.value)
+                          }
                           placeholder="Full name"
                           className="h-12 rounded-xl border-border/50 bg-background/50"
                           required
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="contact-email" className="text-foreground font-medium">
+                        <Label
+                          htmlFor="contact-email"
+                          className="text-foreground font-medium"
+                        >
                           Email Address *
                         </Label>
                         <Input
                           id="contact-email"
                           type="email"
                           value={formData.email}
-                          onChange={(e) => handleInputChange('email', e.target.value)}
+                          onChange={(e) =>
+                            handleInputChange("email", e.target.value)
+                          }
                           placeholder="your@email.com"
                           className="h-12 rounded-xl border-border/50 bg-background/50"
                           required
@@ -157,36 +188,46 @@ const ContactSection = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="contact-subject" className="text-foreground font-medium">
+                      <Label
+                        htmlFor="contact-subject"
+                        className="text-foreground font-medium"
+                      >
                         Subject
                       </Label>
                       <Input
                         id="contact-subject"
                         type="text"
                         value={formData.subject}
-                        onChange={(e) => handleInputChange('subject', e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("subject", e.target.value)
+                        }
                         placeholder="What's this about?"
                         className="h-12 rounded-xl border-border/50 bg-background/50"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="contact-message" className="text-foreground font-medium">
+                      <Label
+                        htmlFor="contact-message"
+                        className="text-foreground font-medium"
+                      >
                         Message *
                       </Label>
                       <Textarea
                         id="contact-message"
                         value={formData.message}
-                        onChange={(e) => handleInputChange('message', e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("message", e.target.value)
+                        }
                         placeholder="Tell us how we can help you..."
                         className="min-h-[150px] rounded-xl border-border/50 bg-background/50 resize-none"
                         required
                       />
                     </div>
 
-                    <Button 
-                      type="submit" 
-                      variant="luxury" 
+                    <Button
+                      type="submit"
+                      variant="luxury"
                       className="w-full h-14 text-lg rounded-xl disabled:opacity-50"
                       disabled={isSubmitting}
                     >
@@ -215,7 +256,7 @@ const ContactSection = () => {
             {contactInfo.map((item, index) => {
               const IconComponent = item.icon;
               return (
-                <div 
+                <div
                   key={index}
                   className="glass rounded-2xl p-6 hover-lift transition-all duration-300"
                   style={{ animationDelay: `${index * 0.1}s` }}
@@ -235,7 +276,11 @@ const ContactSection = () => {
                           </p>
                         ))}
                       </div>
-                      <Button variant="outline" size="sm" className="rounded-full">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="rounded-full"
+                      >
                         {item.action}
                       </Button>
                     </div>
@@ -261,17 +306,21 @@ const ContactSection = () => {
                   Bellissimo Restaurant
                 </h4>
                 <p className="text-muted-foreground mb-4">
-                  123 Gourmet Avenue, Downtown District<br />
+                  123 Gourmet Avenue, Downtown District
+                  <br />
                   New York, NY 10001
                 </p>
                 <Button variant="luxury" className="rounded-full">
                   <span className="relative z-10">Open in Maps</span>
                 </Button>
               </div>
-              
+
               {/* Decorative Elements */}
               <div className="absolute top-4 left-4 w-8 h-8 bg-secondary/30 rounded-full animate-float"></div>
-              <div className="absolute bottom-6 right-6 w-12 h-12 bg-primary/20 rounded-full animate-float" style={{ animationDelay: '1s' }}></div>
+              <div
+                className="absolute bottom-6 right-6 w-12 h-12 bg-primary/20 rounded-full animate-float"
+                style={{ animationDelay: "1s" }}
+              ></div>
             </div>
           </div>
         </div>
